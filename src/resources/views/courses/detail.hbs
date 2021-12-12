@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<body>  
+{{#each temperature}}
+    <h5><span class="badge bg-secondary">{{this.created_date}}</span>:{{this.nd}}<sup>o</sup>C </h5>
+{{/each}}
+{{#each temperature}}
+<canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+
+<script>
+var xValues = [{{#each temperature}}{{this.created_date}},{{/each}}];
+var yValues = [{{#each temperature}}{{this.nd}},{{/each}}];
+
+new Chart("myChart", {
+  type: "line",
+  data: {
+    labels: xValues,
+    datasets: [{
+      fill: false,
+      lineTension: 0,
+      backgroundColor: "rgba(0,0,255,1.0)",
+      borderColor: "rgba(0,0,255,0.1)",
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {display: false},
+    scales: {
+      yAxes: [{ticks: {min: 6, max:16}}],
+    }
+  }
+});
+</script>
+
+</body>
+</html>
+{{/each}}
+<meta http-equiv="refresh" content="5" />

@@ -1,0 +1,58 @@
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
+
+<div class="mt-4">
+    <div class="row">
+        <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+
+       {{#each courses}}
+       <div class="col-sm-6 col-lg-4">           
+            <div class="card card-course-item" >
+                <p class='fas fa-address-card' style="position:absolute;left: 160px;top: 10px">   {{this.ten}}</p>
+                <p class='fas fa-temperature-high' style="position:absolute;left: 160px; top: 40px">   {{this.nd}} <sup>o</sup>C</p>
+                <p class='fas fa-location-arrow' style="position:absolute;left: 160px; top: 70px">   {{this.vt}}</p>
+                <a href="/courses/{{this.slug}}">
+                     <img class="card-img-top" src="{{this.image}}" alt="{{this.name}}">
+                </a>
+                <div class="card-body">
+                <a href="/courses/{{this.slug}}">
+                    <h5 class="card-title">{{this.name}}</h5>
+                </a>
+                <a href="/courses/{{this.slug}}" class="btn btn-primary">Xem chi tiết</a> 
+        
+        
+
+        
+
+
+                </div>      
+            </div>         
+        </div>           
+        {{/each}}        
+    </div>
+</div>
+<style>
+img.card-img-top{
+    height: 100px;
+    width: 150px;    
+}
+</style>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+
+         <style>
+             #map {position: relative; top: 5px ; left: -5px; width: 320px; height: 300px;}
+        </style>
+        <div id = "map">
+        <div class="leaflet-control coordinate"></div>
+        </div>
+
+  
+       
+        
