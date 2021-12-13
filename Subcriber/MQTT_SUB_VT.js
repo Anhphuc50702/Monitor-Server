@@ -18,7 +18,7 @@ MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, fu
         const mqtt=require('mqtt');
         var customer = mqtt.connect('mqtt://broker.emqx.io:1883',{clientId: "vitri1"});
         customer.on('connect',function(){	
-            customer.subscribe("vitri");
+            customer.subscribe("vitri1");
             console.log("Client has subscribed successfully");
         });
         customer.on('message', function(topic,message){

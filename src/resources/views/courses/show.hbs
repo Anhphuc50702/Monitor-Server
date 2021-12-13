@@ -95,7 +95,7 @@
         radius: 700
     }).addTo(map)
 
-    marker.bindPopup("<b> {{course.name}} </b><br>Nhiệt độ hiện tại: {{course.nd}}").openPopup();
+    marker.bindPopup("<b> {{course.name}} </b><br>Nhiệt độ hiện tại: {{course.nd}}<sup>o</sup>C").openPopup();
 
     map.on('mouseover', function(){
         console.log('your mouse is over the map')
