@@ -21,7 +21,7 @@ class CourseController {
         Temperature.find({slug:req.params.slug})
         .then(temperature => 
             //res.json(temperature)
-            res.render('courses/detail', { temperature: mutipleMongooseToObject(temperature) })
+            res.render('courses/temperatures', { temperature: mutipleMongooseToObject(temperature) })
         )
         .catch(next);     
              
