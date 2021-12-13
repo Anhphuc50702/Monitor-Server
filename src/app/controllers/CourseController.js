@@ -3,6 +3,7 @@ const { mongooseToObject } = require('../../util/mongoose');
 const { mutipleMongooseToObject } = require('../../util/mongoose');
 const { Chart } = require('chart.js');
 const Temperature = require('../models/Temperature');
+const Geojson = require('../models/Geojson');
 
 class CourseController {
         // [GET] /courses/:slug
@@ -24,6 +25,16 @@ class CourseController {
         )
         .catch(next);          
     }
+
+        // [GET] /courses/:slug/geoJSON
+        geoJSON(req, res, next) {
+            Geojson.find({slug:req.params.slug})
+            .then(geojson => 
+                //res.json(geojson)
+                res.render('courses/geoJSON', { geojson: mutipleMongooseToObject(geojson) })
+            )
+            .catch(next);          
+        }
 
         // [GET] /courses/create
         create(req, res, next) {

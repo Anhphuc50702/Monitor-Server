@@ -32,6 +32,13 @@
                 href="{{course.slug}}/detail" target="_blank" rel="noopener noreferrer">detail
         </a>
 
+        <a style="background-color: white;
+                border-radius: 2px; border: 1px solid #3b5998; box-sizing: border-box; color: #3b5998; 
+                display: inline-block; font-family: Arial, sans-serif; font-size: 14px; line-height: 1px; 
+                margin: 0px 3px 10px; padding: 10px 14px; text-decoration-line: none; transition: all 0.2s; position: relative ;top: -242px; left:520px" 
+                href="{{course.slug}}/geoJSON" target="_blank" rel="noopener noreferrer">geoJSON
+        </a>
+
         <style>
             p.relative { position: relative ;top: -160px; left:350px;}
  
@@ -71,12 +78,13 @@
         }).addTo(map);
 
         L.control.locate().addTo(map);
-        {{!-- 
-            var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"LineString",
-            "coordinates":[[106.6463892,10.77573351],[106.65799244,10.77195828]]},
+        
+            {{!-- var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"LineString",
+            "coordinates":[[10.77573351,106.6463892].reverse(),[10.77195828,106.65799244].reverse()]},
             "id":"f1eb4c65-7fa8-4c8d-9bf0-8ba3d73c0de7","properties":{"name":"line"}}]}
 
-        L.geoJSON(myGeoJSON).addTo(map) --}}
+        L.geoJSON(myGeoJSON).addTo(map)  --}}
+
    
     var marker = L.marker([{{course.vt}}]).addTo(map);
     
@@ -101,6 +109,6 @@
     
 </body>
 
-<meta http-equiv="refresh" content="10" />
+
 
    
