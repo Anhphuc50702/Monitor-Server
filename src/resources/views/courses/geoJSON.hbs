@@ -1,6 +1,70 @@
 <!DOCTYPE html>
 <html>
+
 <body>  
 {{#each geojson}}
-    <h5><span class="badge bg-secondary">{{this.created_date}}</span>:{{this.vt}}</h5>
+   <aside class="created_date" style="background: rgb(255, 243, 224); box-sizing: inherit; color: #dd2c00; font-family: Roboto, 
+    sans-serif; font-size: 14px; margin: 16px 0px; padding: 12px 24px 12px 20px;">{{this.created_date}}:&ensp;<strong style="box-sizing: inherit; 
+    margin-top: 0px;">{{this.vt}}<sup>o</sup>C</strong></aside>
 {{/each}}
+
+
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+
+
+
+    <style>
+        #map {position: absolute; top: 275px ; left: 300px; width: 1000px; height: 500px;}
+    </style>
+</head>
+<body>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+
+    <div id = "map">
+        <div class="leaflet-control coordinate"></div>
+    </div>
+    <script>
+        var map=L.map('map',{zoomDelta: 0.25, zoomSnap: 0}).setView([10.773557,106.65209184], 16);
+        L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=9pcPDEQjvLWQIWNv93DI', {
+            attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',  
+            crossOrigin: true
+        }).addTo(map);
+
+        L.control.locate().addTo(map);
+        
+            {{!-- var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"LineString",
+            "coordinates":[[10.77573351,106.6463892].reverse(),[10.77195828,106.65799244].reverse()]},
+            "id":"f1eb4c65-7fa8-4c8d-9bf0-8ba3d73c0de7","properties":{"name":"line"}}]}
+
+        L.geoJSON(myGeoJSON).addTo(map)  --}}
+
+   
+    var marker = L.marker([10.77573351,106.6463892]).addTo(map);
+    
+    var circle = L.circle([10.773557,106.65209184], {
+        color: '#D8BFD8',
+        fillColor: '#E6E6FA',
+        fillOpacity: '0.1',
+        radius: 700
+    }).addTo(map)
+
+    //marker.bindPopup("<b> {{course.name}} </b><br>Nhiệt độ hiện tại: {{course.nd}}<sup>o</sup>C").openPopup();
+
+    map.on('mouseover', function(){
+        console.log('your mouse is over the map')
+    })
+    map.on('mousemove', function(e){
+        document.getElementsByClassName('coordinate')[0].innerHTML = 'lat: ' + e.latlng.lat + ',' + 'lng: ' + e.latlng.lng;
+        console.log('lat: ' + e.latlng.lat, 'lng: ' + e.latlng.lng)
+    })
+
+    </script>
+    
+</body>

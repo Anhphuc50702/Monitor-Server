@@ -23,7 +23,7 @@ MongoClient.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, fun
         });
         customer.on('message', function(topic,message){
             var data = message;
-            collection.insertOne({"vt": JSON.parse(data), "created_date": new Date (), "slug": "xe-1"});
+            collection.insertOne({"vt": JSON.parse(data), "created_date": new Date ().toLocaleString(), "slug": "xe-1"});
             console.log('Inserted data');
         })
     } else {

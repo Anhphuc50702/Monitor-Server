@@ -23,7 +23,8 @@ class CourseController {
             //res.json(temperature)
             res.render('courses/detail', { temperature: mutipleMongooseToObject(temperature) })
         )
-        .catch(next);          
+        .catch(next);     
+             
     }
 
         // [GET] /courses/:slug/geoJSON
