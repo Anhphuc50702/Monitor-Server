@@ -1,41 +1,31 @@
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-  const socket_io = require('socket.io');
-  var io = socket_io();
-  const changeStream = Temperature.watch();
-  changeStream.on('change', (change) => {
-    console.log(change); // You could parse out the needed info and send only that data. 
-    io.emit('changeData', change);
-}); 
-
-</script>
-
 <!DOCTYPE html>
 <html>
 <script>document.title = "temperatures"</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <body>  
-</script>
 {{#each temperature}}
     <aside class="created_date" style="background: rgb(255, 243, 224); box-sizing: inherit; width: 250px; color: #dd2c00; font-family: Roboto, 
     sans-serif; font-size: 14px; margin: 0px 0px; padding: 2px 2px 0px 20px; ">{{this.created_date}}:&ensp;<strong style="box-sizing: inherit; 
     margin-top: 0px;">{{this.nd}}<sup>o</sup>C</strong></aside>
 {{/each}}
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="myChart" width="900" height="350"></canvas>
 <script>
-const xlabels = [];
-const yvalues = [];
-yvalues.push({{this.nd}});
-xlabels.push({{this.created_date}});
+//const xlabels = [];
+//const yvalues = [];
+//yvalues.push({{this.nd}});
+//xlabels.push({{this.created_date}});
+const Data = {
+ {{#each temperature}}   "{{this.created_date}}": {{this.nd}},{{/each}}
+  }
+
 const ctx = document.getElementById('myChart').getContext('2d');
 const myChart = new Chart(ctx, {
     type: 'line',
     data: {
-        labels: xlabels,
+        labels: Object.keys(Data),
         datasets: [{
-            label: 'Biểu đồ nhiệt độ',
-            data: yvalues,
+            label: 'Biểu đồ nhiệt độ (độ C)',
+            data: Object.values(Data),
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -64,4 +54,4 @@ const myChart = new Chart(ctx, {
     }
 });
 </script>
-{{!-- <meta http-equiv="refresh" content="5" /> --}}
+ <meta http-equiv="refresh" content="5" />

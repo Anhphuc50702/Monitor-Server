@@ -1,19 +1,9 @@
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  var socket = io();
-  const socket_io = require('socket.io');
-  var io = socket_io();
-  const changeStream = Geojson.watch();
-  changeStream.on('change', (change) => {
-    console.log(change); // You could parse out the needed info and send only that data. 
-    io.emit('changeData', change);
-}); 
-</script>
 
 <!DOCTYPE html>
 <html>
 <script>document.title = "geoJSON"</script>
 <body>  
+
 {{#each geojson}}
    <aside class="created_date" style="background: rgb(255, 243, 224); box-sizing: inherit; width: 400px; color: #dd2c00; font-family: Roboto, 
     sans-serif; font-size: 14px; margin: 0px 0px; padding: 2px 2px 0px 20px;">{{this.created_date}}:&ensp;<strong style="box-sizing: inherit; 
@@ -50,12 +40,15 @@
         }).addTo(map);
 
         L.control.locate().addTo(map);
-        
-            {{!-- var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"LineString",
-            "coordinates":[[10.77573351,106.6463892].reverse(),[10.77195828,106.65799244].reverse()]},
-            "id":"f1eb4c65-7fa8-4c8d-9bf0-8ba3d73c0de7","properties":{"name":"line"}}]}
 
-        L.geoJSON(myGeoJSON).addTo(map)  --}}
+            
+
+       
+            var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"LineString",
+            "coordinates":[{{#each geojson}} [{{this.vt}}].reverse(), {{/each}}]},
+            "id":"f1eb4c65-7fa8-4c8d-9bf0-8ba3d73c0de7","properties":{"name":"line"}}]};
+
+        L.geoJSON(myGeoJSON).addTo(map) 
 
    
     var marker = L.marker([10.77573351,106.6463892]).addTo(map);
@@ -80,3 +73,4 @@
     </script>
     
 </body>
+ <meta http-equiv="refresh" content="5" />
