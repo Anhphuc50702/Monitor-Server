@@ -22,6 +22,7 @@ class CourseController {
         .then(temperature => 
             //res.json(temperature)
             res.render('courses/temperatures', { temperature: mutipleMongooseToObject(temperature) })
+        
         )
         .catch(next);     
              
