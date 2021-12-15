@@ -1,13 +1,13 @@
 
 <!DOCTYPE html>
 <html>
-<script>document.title = "geoJSON"</script>
+<script>document.title = "GeoJSON"</script>
 <body>  
 
 {{#each geojson}}
-   <aside class="created_date" style="background: rgb(255, 243, 224); box-sizing: inherit; width: 400px; color: #dd2c00; font-family: Roboto, 
+   <aside class="created_date" style="position:relative;top: 510px;px ;background: rgb(255, 243, 224); box-sizing: inherit; width: 400px; color: #dd2c00; font-family: Roboto, 
     sans-serif; font-size: 14px; margin: 0px 0px; padding: 2px 2px 0px 20px;">{{this.created_date}}:&ensp;<strong style="box-sizing: inherit; 
-    margin-top: 0px;">{{this.vt}}</strong></aside>
+    margin-top: 0px; ">{{this.vt}}</strong></aside>
 {{/each}}
 
 
@@ -21,7 +21,7 @@
 
 
     <style>
-        #map {position: absolute; top: 275px ; left: 300px; width: 1000px; height: 500px;}
+        #map {position:absolute ; top: 65px ; left: 300px; width: 1000px; height: 500px;}
     </style>
 </head>
 <body>
@@ -33,7 +33,7 @@
         <div class="leaflet-control coordinate"></div>
     </div>
     <script>
-        var map=L.map('map',{zoomDelta: 0.25, zoomSnap: 0}).setView([10.77628705,106.64642759], 20);
+        var map=L.map('map',{zoomDelta: 0.25, zoomSnap: 0}).setView([10.773195,106.654798], 16);
         L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=9pcPDEQjvLWQIWNv93DI', {
             attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',  
             crossOrigin: true
@@ -53,12 +53,12 @@
    
     //var marker = L.marker([10.77573351,106.6463892]).addTo(map);
     
-    var circle = L.circle([10.773557,106.65209184], {
+    {{!-- var circle = L.circle([10.773557,106.65209184], {
         color: '#D8BFD8',
         fillColor: '#E6E6FA',
         fillOpacity: '0.1',
         radius: 700
-    }).addTo(map)
+    }).addTo(map) --}}
 
     //marker.bindPopup("<b> {{course.name}} </b><br>Nhiệt độ hiện tại: {{course.nd}}<sup>o</sup>C").openPopup();
 
@@ -73,4 +73,4 @@
     </script>
     
 </body>
- <meta http-equiv="refresh" content="5" />
+ <meta http-equiv="refresh" content="10" />

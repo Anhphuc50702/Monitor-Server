@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html>
-<script>document.title = "temperatures"</script>
+<script>document.title = "Temperatures"</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <body>  
-{{#each temperature}}
-    <aside class="created_date" style="background: rgb(255, 243, 224); box-sizing: inherit; width: 250px; color: #dd2c00; font-family: Roboto, 
-    sans-serif; font-size: 14px; margin: 0px 0px; padding: 2px 2px 0px 20px; ">{{this.created_date}}:&ensp;<strong style="box-sizing: inherit; 
-    margin-top: 0px;">{{this.nd}}<sup>o</sup>C</strong></aside>
-{{/each}}
 <canvas id="myChart" width="900" height="350"></canvas>
 <script>
 //const xlabels = [];
@@ -54,4 +49,9 @@ const myChart = new Chart(ctx, {
     }
 });
 </script>
- <meta http-equiv="refresh" content="5" />
+{{#each temperature}}
+    <aside class="created_date" style="background: rgb(255, 243, 224); box-sizing: inherit; width: 250px; color: #dd2c00; font-family: Roboto, 
+    sans-serif; font-size: 14px; margin: 0px 0px; padding: 2px 2px 0px 20px; ">{{this.created_date}}:&ensp;<strong style="box-sizing: inherit; 
+    margin-top: 0px;">{{this.nd}}<sup>o</sup>C</strong></aside>
+{{/each}}
+ <meta http-equiv="refresh" content="10" />

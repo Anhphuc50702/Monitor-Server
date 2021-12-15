@@ -8,7 +8,7 @@ const Schema = mongoose.Schema;
 const Geojson = new Schema({
     name: { type: String, required: true },
     slug: { type: String, slug: 'name' },
-    vt: { type: String},
+    vt: { type: String, minlength: 20},
 
      }, {
     timestamps: true,
