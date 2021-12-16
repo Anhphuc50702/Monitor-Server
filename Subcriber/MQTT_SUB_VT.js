@@ -8,7 +8,7 @@ const url = 'mongodb://localhost:27017';
 const dbName = 'NTAP_NBIoT';
 
 // Use connect method to connect to the server
-MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
+MongoClient.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
     assert.equal(null, err);
     console.log("Connected successfully to server");
 
@@ -22,26 +22,18 @@ MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, fu
             console.log("Client has subscribed successfully");
         });
         customer.on('message', function(topic,message){
-            var data = message; 
+            var data = message;
             var myquery = { name: "Xe 1" };
             var newvalues = { $set: { vt: JSON.parse(data) } };
-            collection.updateOne(myquery, newvalues, function(err, res) {
-                if (err) throw err;
-                console.log("vi tri da cap nhat");
-
-
-
-            //collection.insertOne(JSON.parse(data));
-           // console.log('Inserted data');
-        });
-  //  } else {
-   //     console.log('Conntect collection Faild');
-    });
+            collection.updateOne(myquery, newvalues, function(err, res) {                
+                console.log("vi tri da cap nhat")})});        
+    } else {
+        console.log('Conntect collection Faild');
+    }
    
     
     customer.on('message',function(topic, message, packet){
         console.log("message is "+ message);
         console.log("topic is "+ topic);
     });
-}});
-
+});

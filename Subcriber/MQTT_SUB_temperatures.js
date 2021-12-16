@@ -14,7 +14,7 @@ MongoClient.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, fun
 
     const db = client.db(dbName);
     collection = db.collection("temperatures");
-    if (collection) {
+        if (collection) {
         const mqtt=require('mqtt');
         var customer = mqtt.connect('mqtt://broker.emqx.io:1883',{clientId: "temperature"});
         customer.on('connect',function(){	
@@ -23,6 +23,7 @@ MongoClient.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, fun
         });
         customer.on('message', function(topic,message){
             var data = message;
+            collection.createIndex( { "created_date": 1 }, { expireAfterSeconds: 10 } )
             collection.insertOne({"nd": JSON.parse(data), "created_date": new Date ().toLocaleString(), "slug": "xe-1"});
             console.log('Inserted data');
         })

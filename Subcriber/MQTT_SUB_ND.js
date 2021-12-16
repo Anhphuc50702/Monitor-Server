@@ -13,6 +13,7 @@ MongoClient.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, fun
     console.log("Connected successfully to server");
     const db = client.db(dbName);
     collection = db.collection("courses");
+
     if (collection) {
         const mqtt=require('mqtt');
         var customer = mqtt.connect('mqtt://broker.emqx.io:1883',{clientId: "nhietdo1"});
@@ -33,4 +34,5 @@ MongoClient.connect(url,{ useNewUrlParser: true, useUnifiedTopology: true }, fun
         console.log("message is "+ message);
         console.log("topic is "+ topic);
     });
-}});
+    }
+});

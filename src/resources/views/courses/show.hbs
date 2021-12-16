@@ -21,20 +21,20 @@
         <p>Khởi hành lúc: {{course.khl}} </p>
         <p>Khởi hành tại: {{course.kht}} </p>
         <p class="relative">Số người trên xe: {{course.sl}} </p>
-        <p class="relative">Vị trí: {{course.vt}} </p1>
+        <p class="relative">Vị trí (latitude, longitude): {{course.vt}} </p1>
         <p class="relative">Nhiệt độ: {{course.nd}}<sup>o</sup>C </p>
         <p class="relative">Biển số: {{course.bs}}</p>
         <a  style="background-color: white;
                 border-radius: 2px; border: 1px solid #3b5998; box-sizing: border-box; color: #3b5998; 
-                display: inline-block; font-family: Arial, sans-serif; font-size: 14px; line-height: 1px; 
+                display: inline-block; font-family: Arial, sans-serif; font-size: 10px; line-height: 1px; 
                 margin: 0px 3px 10px; padding: 10px 14px; text-decoration-line: none; transition: all 0.2s; position: relative ;top: -242px; left:460px" 
                 href="{{course.slug}}/temperatures" target="_blank" rel="noopener noreferrer">temperatures
         </a>
 
         <a  style="background-color: white;
                 border-radius: 2px; border: 1px solid #3b5998; box-sizing: border-box; color: #3b5998; 
-                display: inline-block; font-family: Arial, sans-serif; font-size: 14px; line-height: 1px; 
-                margin: 0px 3px 10px; padding: 10px 14px; text-decoration-line: none; transition: all 0.2s; position: relative ;top: -284px; left:500px" 
+                display: inline-block; font-family: Arial, sans-serif; font-size: 10px; line-height: 1px; 
+                margin: 0px 3px 10px; padding: 10px 14px; text-decoration-line: none; transition: all 0.2s; position: relative ;top: -284px; left:660px" 
                 href="{{course.slug}}/geoJSON" target="_blank" rel="noopener noreferrer">geoJSON
         </a>
 
@@ -77,14 +77,7 @@
         }).addTo(map);
 
         L.control.locate().addTo(map);
-        
-            {{!-- var myGeoJSON = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"LineString",
-            "coordinates":[[10.77573351,106.6463892].reverse(),[10.77195828,106.65799244].reverse()]},
-            "id":"f1eb4c65-7fa8-4c8d-9bf0-8ba3d73c0de7","properties":{"name":"line"}}]}
-
-        L.geoJSON(myGeoJSON).addTo(map)  --}}
-
-   
+      
     var marker = L.marker([{{course.vt}}]).addTo(map);
     
     var circle = L.circle([10.773557,106.65209184], {
@@ -107,8 +100,4 @@
     </script>
     
 </body>
- <meta http-equiv="refresh" content="30" />
-
-
-
-   
+ {{!-- <meta http-equiv="refresh" content="30" /> --}}   

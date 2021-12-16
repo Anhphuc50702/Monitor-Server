@@ -16,7 +16,7 @@ class CourseController {
         }
    
 
-        // [GET] /courses/:slug/detail
+        // [GET] /courses/:slug/temperature
         temperature(req, res, next) {
         Temperature.find({slug:req.params.slug})
         .then(temperature => 
