@@ -4,13 +4,35 @@ const { mutipleMongooseToObject } = require('../../util/mongoose');
 const { Chart } = require('chart.js');
 const Temperature = require('../models/Temperature');
 const Geojson = require('../models/Geojson');
+const async = require('async');
 
 class CourseController {
+        
+        // // test 
+        // show(req, res, next){
+        //     var resources = {
+        //         course: Course.findOne({ slug: req.params.slug }).exec.bind(Course.findOne({ slug: req.params.slug })),
+        //         temperature: Temperature.find({slug:req.params.slug}).exec.bind(Temperature.find({slug:req.params.slug})),
+        //         geojson: Geojson.find({slug:req.params.slug}).exec.bind(Geojson.find({slug:req.params.slug}))
+        //     };
+        //     async.parallel(resources, function (error, results){
+        //         if (error) {
+        //             res.status(500).send(error);
+        //             return;
+        //         }
+        //         //res.json(results)
+        //         res.render('courses/show', results);
+        //     });
+
+        // }
+        
+
         // [GET] /courses/:slug
         show(req, res, next) {
             Course.findOne({ slug: req.params.slug })
             .then(course => 
-                res.render('courses/show', { course: mongooseToObject(course) })
+               // res.json(course)
+               res.render('courses/show', { course: mongooseToObject(course) })
             )
             .catch(next);          
         }
