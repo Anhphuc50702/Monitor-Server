@@ -26,7 +26,8 @@ Download Monitor-Server về máy
 
 Mở file với VS Code 
 
-Chạy lần lượt `npm start`, `node Subcriber/MQTT_SUB_ND.js`, `node Subcriber/MQTT_SUB_VT.js`, `node Subcriber/MQTT_SUB_temperatures.js` `node Subcriber/MQTT_SUB_geoJSON.js` trong terminal để khởi động server và bật subcriber tới MQTT Broker
+Chạy lần lượt `npm start`, `npm run dev` trong terminal để khởi động server và bật subcriber tới MQTT Broker
+
 
 
  
