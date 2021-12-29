@@ -7,7 +7,14 @@
     "beautiful": "prettier --single-quote --trailing-comma all --tab-width 4 --write 'src/**/*.{js,json,scss}'",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/resources/scss/ --output src/public/css/",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ND": "node Subcriber/MQTT_SUB_ND.js",
+    "VT": "node Subcriber/MQTT_SUB_VT.js",
+    "tem": "node Subcriber/MQTT_SUB_temperatures.js",
+    "geo": "node Subcriber/MQTT_SUB_geojsons.js",
+    "DLND": "node Subcriber/MQTT_deleteND.js",
+    "DLVT": "node Subcriber/MQTT_deleteVT.js",
+    "dev": "concurrently --kill-others \"npm run ND\" \"npm run VT\" \"npm run tem\" \"npm run geo\""
   },
   "repository": {
     "type": "git",
