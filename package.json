@@ -12,9 +12,10 @@
     "VT": "node Subcriber/MQTT_SUB_VT.js",
     "tem": "node Subcriber/MQTT_SUB_temperatures.js",
     "geo": "node Subcriber/MQTT_SUB_geojsons.js",
-    "DLND": "node Subcriber/MQTT_deleteND.js",
-    "DLVT": "node Subcriber/MQTT_deleteVT.js",
-    "dev": "concurrently --kill-others \"npm run ND\" \"npm run VT\" \"npm run tem\" \"npm run geo\""
+    "deletetemp": "node Subcriber/MQTT_deleteND.js",
+    "deletegeo": "node Subcriber/MQTT_deleteVT.js",
+    "dev": "concurrently --kill-others \"npm run ND\" \"npm run VT\" \"npm run tem\" \"npm run geo\"",
+    "delete": "concurrently --kill-others \"npm run deletetemp\" \"npm run deletegeo\""
   },
   "repository": {
     "type": "git",

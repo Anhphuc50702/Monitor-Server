@@ -9,6 +9,7 @@ const Course = new Schema({
     name: { type: String, required: true },
     khl: { type: String },
     image: { type: String },
+    sdt: { type: String },
     kht: { type: String },
     klh: { type: String },
     sl: { type: String },

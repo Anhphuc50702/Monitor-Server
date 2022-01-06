@@ -50,16 +50,18 @@
 
         L.geoJSON(myGeoJSON).addTo(map) 
         
-        var marker = L.marker([]).addTo(map);
+    //var marker = L.marker([]).addTo(map);
    
     //var marker = L.marker([10.77573351,106.6463892]).addTo(map);
+
+
     
-    {{!-- var circle = L.circle([10.773557,106.65209184], {
+    var circle = L.circle([10.773557,106.65209184], {
         color: '#D8BFD8',
         fillColor: '#E6E6FA',
         fillOpacity: '0.1',
         radius: 700
-    }).addTo(map) --}}
+    }).addTo(map)
 
     //marker.bindPopup("<b> {{course.name}} </b><br>Nhiệt độ hiện tại: {{course.nd}}<sup>o</sup>C").openPopup();
 
